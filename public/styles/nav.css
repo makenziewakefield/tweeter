@@ -9,10 +9,6 @@ nav {
   align-items: center;
 }
 
-nav .tweeter-text {
-  font-family: 'Bungee', sans-serif;
-}
-
 .new-tweet {
   font-size: 0.9em;
   font-family: 'Source Serif 3', sans-serif;
