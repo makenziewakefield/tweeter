@@ -23,3 +23,12 @@ body {
 /*
  * Additional CSS can be defined below or in other CSS files, as per instructions
  */
+
+ :root {
+  --font-family-main: "Source Sans 3", sans-serif;
+  --font-family-logo: "Bungee", sans-serif;
+}
+
+nav span {
+  font-family: var(--font-family-logo);
+}
