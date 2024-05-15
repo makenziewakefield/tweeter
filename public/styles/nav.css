@@ -1,3 +1,7 @@
+body {
+  font-family: 'Bungee', sans-serif;
+}
+
 nav {
   height: 120px;
   width: 100%;
@@ -10,11 +14,11 @@ nav {
 }
 
 .new-tweet {
-  font-size: 0.9em;
-  font-family: 'Source Serif 3', sans-serif;
+  font-size: 0.8em;
   display: flex;
   flex-direction: column;
   align-items: center;
+  margin-top: 20px;
 }
 
 .angle-down-icon {
