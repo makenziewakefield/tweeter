@@ -32,3 +32,9 @@ body {
 nav span {
   font-family: var(--font-family-logo);
 }
+
+main {
+  width: 90%;
+  margin: 0 auto;
+  background-color: inherit;
+}
