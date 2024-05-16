@@ -1,6 +1,7 @@
 header {
-  height: calc(400px + 120px);
+  height: 400px;
   width: 100%;
+  padding-top: 120px;
   background-color: #ffaa00;
   display: flex;
   flex-direction: column;
@@ -10,8 +11,8 @@ header {
 }
 
 .avatar {
-  width: 150px;
-  height: 150px;
+  width: 200px;
+  height: 200px;
 }
 
 .name {
