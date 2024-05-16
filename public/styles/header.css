@@ -1,5 +1,5 @@
 header {
-  height: 800px;
+  height: calc(400px + 120px);
   width: 100%;
   background-color: #ffaa00;
   display: flex;
@@ -10,8 +10,8 @@ header {
 }
 
 .avatar {
-  width: 230px;
-  height: 230px;
+  width: 150px;
+  height: 150px;
 }
 
 .name {
