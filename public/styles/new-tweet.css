@@ -5,18 +5,13 @@
   font-family: 'Source Sans 3', sans-serif;
 }
 
-.tweet-form {
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-}
-
 .new-tweet textarea {
-  width: 90%;
+  width: 100%;
   border: none;
   border-bottom: 5px solid darkslategray;
   outline: none;
   font-family: 'Source Sans 3', sans-serif;
+  padding: 10px;
 }
 
 .new-tweet button {
@@ -29,6 +24,17 @@
   font-family: 'Bungee', sans-serif;
 }
 
+.new-tweet button:hover {
+  background-color: #2c3b6d;
+}
+
 .counter {
   font-family: 'Bungee', sans-serif;
+}
+
+.tweet-footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 5px;
 }
