@@ -9,9 +9,9 @@
   width: 100%;
   border: none;
   border-bottom: 5px solid darkslategray;
+  background-color: #f4f1ec;
   outline: none;
   font-family: 'Source Sans 3', sans-serif;
-  padding: 10px;
 }
 
 .new-tweet button {
