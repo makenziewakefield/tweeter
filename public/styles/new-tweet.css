@@ -3,15 +3,19 @@
   flex-direction: column;
   align-items: center;
   font-family: 'Source Sans 3', sans-serif;
+  padding-bottom: 80px;
+  padding-top: 50px;
+  width: 100%;
 }
 
 .new-tweet textarea {
   width: 100%;
   border: none;
-  border-bottom: 5px solid darkslategray;
+  border-bottom: 3px solid darkslategray;
   background-color: #f4f1ec;
   outline: none;
   font-family: 'Source Sans 3', sans-serif;
+  padding-top: 20px;
 }
 
 .new-tweet button {
