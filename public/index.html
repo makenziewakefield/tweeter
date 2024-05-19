@@ -22,6 +22,7 @@
   <link rel="stylesheet" href="/styles/nav.css" type="text/css" />
   <link rel="stylesheet" href="/styles/header.css" type="text/css">
   <link rel="stylesheet" href="/styles/new-tweet.css" type="text/css">
+  <link rel="stylesheet" href="/styles/tweets.css" type="text/css">
 
   <!-- External JS -->
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
@@ -55,7 +56,7 @@
   <!-- Page-specific (main) content here -->
   <main class="container">
     <section class="new-tweet">
-      <h2>Compose Tweet</h2>
+      <!-- <h2>Compose Tweet</h2> -->
       <form action="/tweets" method="POST">
         <div class="tweet-input">
           <label for="tweet-text">What are you humming about?</label>
@@ -69,6 +70,28 @@
         </div>
       </form>
     </section>
+
+    <div class="tweets-wrapper">
+    <article class="tweets-container">
+      <div class="user-info">
+        <div class="user-profile">
+          <img src="/images/profile-hex.png">
+          <span>User Name</span>
+        </div>
+        <span class="user-handle">@userhandle</span>
+      </div>
+      <p class="text-tweet">Hello World!</p>
+      <footer>
+        <span>2 days ago</span>
+        <div>
+          <i class="fa-solid fa-flag"></i>
+          <i class="fa-solid fa-retweet"></i>
+          <i class="fa-solid fa-heart"></i>
+        </div>
+      </footer>
+    </article>
+    </div>
+
   </main>
 </body>
 
