@@ -35,7 +35,6 @@ $(document).ready(function () {
 
   // Function to render tweets on the page
   const renderTweets = function (tweets) {
-    $('#tweets-container').empty();
     for (const tweet of tweets) {
       const $tweet = createTweetElement(tweet);
       if ($tweet) {
