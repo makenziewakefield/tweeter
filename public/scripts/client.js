@@ -9,6 +9,8 @@ $(document).ready(function() {
 
   // Function to render tweets on the page
   const renderTweets = function (tweets) {
+    const $container = $('tweets-container');
+    $container.empty();
     for (const tweet of tweets) {
       const $tweet = createTweetElement(tweet);
       if ($tweet) {
@@ -56,7 +58,7 @@ $(document).ready(function() {
       method: 'GET',
       dataType: 'json'
     })
-      .done(function (response) {
+      .done(function(response) {
         renderTweets(response);
       })
       .fail(function (xhr, status, error) {
@@ -97,7 +99,6 @@ $(document).ready(function() {
         console.error('Error:', err);
       });
   });
-
 
   loadTweets();
 
