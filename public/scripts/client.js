@@ -5,32 +5,6 @@
  */
 
 
-const data = [
-  {
-    "user": {
-      "name": "Newton",
-      "avatars": "https://i.imgur.com/73hZDYK.png",
-      "handle": "@SirIsaac"
-    },
-    "content": {
-      "text": "If I have seen further it is by standing on the shoulders of giants"
-    },
-    "created_at": 1461116232227
-  },
-  {
-    "user": {
-      "name": "Descartes",
-      "avatars": "https://i.imgur.com/nlhLi3I.png",
-      "handle": "@rd"
-    },
-    "content": {
-      "text": "Je pense , donc je suis"
-    },
-    "created_at": 1461113959088
-  }
-];
-
-
 $(document).ready(function () {
 
   // Function to render tweets on the page
@@ -45,6 +19,7 @@ $(document).ready(function () {
 
   // Function to create HTML structure for a single tweet
   const createTweetElement = function(tweet) {
+    const timeStamp = timeago.format(tweet.created_at);
     let $tweet = (`
       <article class="tweet">
         <header>
@@ -60,20 +35,30 @@ $(document).ready(function () {
           <p>${tweet.content.text}</p>
         </div>
         <footer>
-          <span>${formatDate(tweet.created_at)}</span>
+          <span>${timeStamp}</span>
         </footer>
       </article>
     `)
     return $tweet;
   };
 
-  // Function to format the date from timestamp
-  const formatDate = function(timestamp) {
-    const date = new Date(timestamp);
-    const options = { year: 'numeric', month: 'short', day: 'numeric' };
-    return date.toLocaleDateString('en-US', options);
-  }
+  // Function to load tweets from the server
+  const loadTweets = function() {
+    $.ajax({
+      url: '/tweets',
+      method: 'GET',
+      dataType: 'json', // Expect JSON response
+      success: function(response) {
+        renderTweets(response); // Render tweets on success
+      },
+      error: function(xhr, status, error) {
+        console.error('Error:', error);
+      }
+    });
+  };
 
+
+  // Event listener for form submission
   $('#tweet-form').submit(function(event) {
     event.preventDefault();
     const formData = $(this).serialize();
@@ -91,6 +76,6 @@ $(document).ready(function () {
     });
   });
 
-  renderTweets(data);
+  loadTweets();
 
 });
