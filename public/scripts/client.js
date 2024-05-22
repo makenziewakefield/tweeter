@@ -18,44 +18,51 @@ $(document).ready(function () {
   };
 
   // Function to create HTML structure for a single tweet
-  const createTweetElement = function(tweet) {
-    const timeStamp = timeago.format(tweet.created_at);
-    let $tweet = (`
-      <article class="tweet">
-        <header>
-          <div class="user-info">
-            <div class="user-profile">
-              <img src="${tweet.user.avatars}" alt="User Avatar">
-              <span>${tweet.user.name}</span>
-            </div>
-            <span class="user-handle">${tweet.user.handle}</span>
-          </div>
-        </header>
-        <div class="tweet-content">
-          <p>${tweet.content.text}</p>
-        </div>
-        <footer>
-          <span>${timeStamp}</span>
-        </footer>
-      </article>
-    `)
-    return $tweet;
-  };
+const createTweetElement = function(tweet) {
+  
+  const timeAgo = timeago.format(tweet.created_at);
+  
+  const $header = $('<header>');
+  const $userInfo = $('<div class="user-info">');
+  const $userProfile = $('<div class="user-profile">');
+  const $avatar = $('<img>').attr('src', tweet.user.avatars).attr('alt', 'User Avatar');
+  const $name = $('<span>').text(tweet.user.name);
+  const $handle = $('<span class="user-handle">').text(tweet.user.handle);
+  
+  $userProfile.append($avatar, $name);
+  $userInfo.append($userProfile, $handle);
+  $header.append($userInfo);
+  
+  const $content = $('<div class="tweet-content">');
+  const $text = $('<p>').text(tweet.content.text);
+  $content.append($text);
+  
+  const $footer = $('<footer>');
+  const $time = $('<span>').text(timeAgo);
+  $footer.append($time);
+  
+  const $tweet = $('<article class="tweet">');
+  $tweet.append($header, $content, $footer);
+  
+  return $tweet;
+};
+
 
   // Function to load tweets from the server
-  const loadTweets = function() {
-    $.ajax({
-      url: '/tweets',
-      method: 'GET',
-      dataType: 'json', // Expect JSON response
-      success: function(response) {
-        renderTweets(response); // Render tweets on success
-      },
-      error: function(xhr, status, error) {
-        console.error('Error:', error);
-      }
-    });
-  };
+const loadTweets = function() {
+  $.ajax({
+    url: '/tweets',
+    method: 'GET',
+    dataType: 'json'
+  })
+  .done(function(response) {
+    renderTweets(response);
+  })
+  .fail(function(xhr, status, error) {
+    console.error('Error:', error);
+  });
+};
+
 
 
   // Event listener for form submission
