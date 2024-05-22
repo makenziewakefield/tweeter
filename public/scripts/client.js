@@ -34,7 +34,7 @@ const data = [
 $(document).ready(function () {
 
   // Function to render tweets on the page
-  const renderTweets = function (tweets) {
+  const renderTweets = function(tweets) {
     for (const tweet of tweets) {
       const $tweet = createTweetElement(tweet);
       if ($tweet) {
@@ -44,7 +44,7 @@ $(document).ready(function () {
   };
 
   // Function to create HTML structure for a single tweet
-  const createTweetElement = function (tweet) {
+  const createTweetElement = function(tweet) {
     let $tweet = (`
       <article class="tweet">
         <header>
@@ -68,11 +68,28 @@ $(document).ready(function () {
   };
 
   // Function to format the date from timestamp
-  const formatDate = function (timestamp) {
+  const formatDate = function(timestamp) {
     const date = new Date(timestamp);
     const options = { year: 'numeric', month: 'short', day: 'numeric' };
     return date.toLocaleDateString('en-US', options);
   }
+
+  $('#tweet-form').submit(function(event) {
+    event.preventDefault();
+    const formData = $(this).serialize();
+  
+    $.ajax({
+      url: '/tweets',
+      method: 'POST',
+      data: formData
+    })
+    .done(function(response) {
+      renderTweets([response]);
+    })
+    .fail(function(err) {
+      console.error('Error:', err);
+    });
+  });
 
   renderTweets(data);
 
