@@ -28,8 +28,9 @@
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 
   <!-- App JS -->
-  <script type="text/javascript" src="/scripts/client.js"></script>
+  <!-- <script type="text/javascript" src="/scripts/client.js"></script> -->
   <script src="scripts/composer-char-counter.js"></script>
+  <script src="scripts/client.js"></script>
 </head>
 
 <body>
@@ -57,7 +58,7 @@
   <main class="container">
     <section class="new-tweet">
       <!-- <h2>Compose Tweet</h2> -->
-      <form action="/tweets" method="POST">
+      <form action="/tweets" method="POST" id="tweet-form">
         <div class="tweet-input">
           <label for="tweet-text">What are you humming about?</label>
           <textarea name="text" id="tweet-text"></textarea>
@@ -71,7 +72,7 @@
       </form>
     </section>
 
-    <div class="tweets-wrapper">
+    <div class="tweets-wrapper" id="tweets-container">
     <article class="tweets-container">
       <div class="user-info">
         <div class="user-profile">
