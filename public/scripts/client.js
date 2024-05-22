@@ -88,18 +88,15 @@ $(document).ready(function() {
       return;
     }
 
-    $.ajax({
-      url: '/tweets',
-      method: 'POST',
-      data: formData
-    })
-      .done(function (response) {
-        renderTweets([response]);
+    $.post('/tweets', formData)
+      .done(function(data) {
+        renderTweet(data);
       })
-      .fail(function (err) {
+      .fail(function(err) {
         console.error('Error:', err);
       });
   });
+
 
   loadTweets();
 
