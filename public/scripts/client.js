@@ -90,7 +90,8 @@ $(document).ready(function() {
 
     $.post('/tweets', formData)
       .done(function(data) {
-        renderTweet(data);
+        $('#tweets-container').empty();
+        loadTweets();
       })
       .fail(function(err) {
         console.error('Error:', err);
