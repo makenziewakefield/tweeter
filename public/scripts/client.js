@@ -81,11 +81,9 @@ $(document).ready(function () {
   // Function to validate tweet content
   const isTweetValid = function (tweetContent) {
     if (!tweetContent) {
-      alert('Error: Tweet cannot be empty.');
-      return;
+      return false;
     } else if (tweetContent.length > 140) {
-      alert('Error: Tweet cannot exceed 140 characters.');
-      return;
+      return false;
     }
     return true;
   };
@@ -98,8 +96,12 @@ $(document).ready(function () {
     const tweetContent = formData.trim().slice(5);
 
     if (!isTweetValid(tweetContent)) {
+      $('.error-message').text("❗️ Tweet cannot be empty or exceed 140 characters ❗️");
+      $('.error-message').slideDown();
       return;
     }
+
+    $('.error-message').slideUp();
 
     $.post('/tweets', formData)
       .done(function (data) {
