@@ -19,6 +19,14 @@ $(document).ready(function () {
     }
   };
 
+  
+  // Helper function to escape potentially harmful characters
+  const escape = function(str) {
+    let div = document.createElement('div');
+    div.appendChild(document.createTextNode(str));
+    return div.innerHTML;
+  };
+
 
   // Function to create HTML structure for a single tweet
   const createTweetElement = function (tweet) {
@@ -28,14 +36,14 @@ $(document).ready(function () {
     const $header = $('<div class="tweet-header">');
     const $userProfile = $('<div class="user-profile">');
     const $avatar = $('<img>').attr('src', tweet.user.avatars).attr('alt', 'User Avatar');
-    const $name = $('<span class="user-name">').text(tweet.user.name);
-    const $handle = $('<span class="user-handle">').text(tweet.user.handle);
+    const $name = $('<span class="user-name">').text(escape(tweet.user.name));
+    const $handle = $('<span class="user-handle">').text(escape(tweet.user.handle));
 
     $userProfile.append($avatar, $name);
     $header.append($userProfile, $handle);
 
     const $content = $('<div class="tweet-content">');
-    const $text = $('<p>').text(tweet.content.text);
+    const $text = $('<p>').text(escape(tweet.content.text));
     $content.append($text);
 
     const $footer = $('<div class="tweets-footer">');
