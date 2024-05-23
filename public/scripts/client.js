@@ -95,7 +95,8 @@ $(document).ready(function () {
 
     $.post('/tweets', formData)
       .done(function (data) {
-        $('#tweets-container').empty();
+        $('#tweet-text').val('');
+        $('#tweet-container').empty();
         loadTweets();
       })
       .fail(function (err) {
