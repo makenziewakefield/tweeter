@@ -5,7 +5,7 @@
  */
 
 
-$(document).ready(function() {
+$(document).ready(function () {
 
   // Function to render tweets on the page
   const renderTweets = function (tweets) {
@@ -21,30 +21,33 @@ $(document).ready(function() {
 
 
   // Function to create HTML structure for a single tweet
-  const createTweetElement = function(tweet) {
+  const createTweetElement = function (tweet) {
 
     const timeAgo = timeago.format(tweet.created_at);
 
-    const $header = $('<header>');
-    const $userInfo = $('<div class="user-info">');
+    const $header = $('<div class="tweet-header">');
     const $userProfile = $('<div class="user-profile">');
     const $avatar = $('<img>').attr('src', tweet.user.avatars).attr('alt', 'User Avatar');
-    const $name = $('<span>').text(tweet.user.name);
+    const $name = $('<span class="user-name">').text(tweet.user.name);
     const $handle = $('<span class="user-handle">').text(tweet.user.handle);
 
     $userProfile.append($avatar, $name);
-    $userInfo.append($userProfile, $handle);
-    $header.append($userInfo);
+    $header.append($userProfile, $handle);
 
     const $content = $('<div class="tweet-content">');
     const $text = $('<p>').text(tweet.content.text);
     $content.append($text);
 
-    const $footer = $('<footer>');
+    const $footer = $('<div class="tweets-footer">');
     const $time = $('<span>').text(timeAgo);
-    $footer.append($time);
+    const $icons = $('<div>').append(
+      $('<i>').addClass('fa-solid fa-flag'),
+      $('<i>').addClass('fa-solid fa-retweet'),
+      $('<i>').addClass('fa-solid fa-heart')
+    );
+    $footer.append($time, $icons);
 
-    const $tweet = $('<article class="tweet">');
+    const $tweet = $('<article class="tweets-container">');
     $tweet.append($header, $content, $footer);
 
     return $tweet;
@@ -52,13 +55,13 @@ $(document).ready(function() {
 
 
   // Function to load tweets from the server
-  const loadTweets = function() {
+  const loadTweets = function () {
     $.ajax({
       url: '/tweets',
       method: 'GET',
       dataType: 'json'
     })
-      .done(function(response) {
+      .done(function (response) {
         renderTweets(response);
       })
       .fail(function (xhr, status, error) {
@@ -68,7 +71,7 @@ $(document).ready(function() {
 
 
   // Function to validate tweet content
-  const isTweetValid = function(tweetContent) {
+  const isTweetValid = function (tweetContent) {
     if (!tweetContent) {
       alert('Error: Tweet cannot be empty.');
       return;
@@ -81,7 +84,7 @@ $(document).ready(function() {
 
 
   // Event listener for form submission
-  $('#tweet-form').submit(function(event) {
+  $('#tweet-form').submit(function (event) {
     event.preventDefault();
     const formData = $(this).serialize();
     const tweetContent = formData.trim().slice(5);
@@ -91,11 +94,11 @@ $(document).ready(function() {
     }
 
     $.post('/tweets', formData)
-      .done(function(data) {
+      .done(function (data) {
         $('#tweets-container').empty();
         loadTweets();
       })
-      .fail(function(err) {
+      .fail(function (err) {
         console.error('Error:', err);
       });
   });
