@@ -39,6 +39,11 @@ nav span {
 }
 
 @media screen and (min-width: 1024px) {
+  body {
+    display: flex;
+    flex-direction: row;
+  }
+
   .main-header {
     width: 40%;
     margin-top: 150px;
@@ -51,13 +56,18 @@ nav span {
     padding-top: 100px;
   }
 
-  body {
-    display: flex;
-    flex-direction: row;
-  }
-
   .user-info {
     position: relative;
     top: -40px;
+  }
+}
+
+@media screen and (max-width: 1023px) {
+  .main-nav {
+    display: none;
+  }
+
+  .user-info {
+    padding-bottom: 100px;
   }
 }
