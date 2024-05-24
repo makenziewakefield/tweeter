@@ -1,10 +1,3 @@
-/*
- * Client-side JS logic goes here
- * jQuery is already loaded
- * Reminder: Use (and do all your DOM work in) jQuery's document ready function
- */
-
-
 $(document).ready(function() {
 
   // Function to render tweets on the page
@@ -20,7 +13,7 @@ $(document).ready(function() {
   };
 
   
-  // Helper function to escape potentially harmful characters
+  // Function to escape potentially harmful characters
   const escape = function(str) {
     let div = document.createElement('div');
     div.appendChild(document.createTextNode(str));
@@ -48,7 +41,7 @@ $(document).ready(function() {
 
     const $footer = $('<div class="tweets-footer">');
     const $time = $('<span>').text(timeAgo);
-    const $icons = $('<div>').append(
+    const $icons = $('<div class="footer-icons">').append(
       $('<i>').addClass('fa-solid fa-flag'),
       $('<i>').addClass('fa-solid fa-retweet'),
       $('<i>').addClass('fa-solid fa-heart')
@@ -90,7 +83,7 @@ $(document).ready(function() {
 
 
   // Event listener for form submission
-  $('#tweet-form').submit(function (event) {
+  $('#tweet-form').submit(function(event) {
     event.preventDefault();
     const formData = $(this).serialize();
     const tweetContent = formData.trim().slice(5);

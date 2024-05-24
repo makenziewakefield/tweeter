@@ -46,6 +46,7 @@
     </div>
   </nav>
 
+  <!-- Header content -->
   <header class="main-header">
     <div class="user-info">
       <div>
@@ -59,22 +60,24 @@
 
   <!-- Page-specific (main) content here -->
   <main class="container">
+
     <section class="new-tweet">
       <div class="error-message"></div>
+
       <form action="/tweets" method="POST" id="tweet-form">
         <div class="tweet-input">
           <label for="tweet-text">What are you humming about?</label>
           <textarea name="text" id="tweet-text"></textarea>
         </div>
-        <div>
-          <footer class="tweet-footer">
-            <button type="submit">Tweet</button>
-            <output name="counter" class="counter" for="tweet-text">140</output>
-          </footer>
-        </div>
+
+        <footer class="new-tweet-footer">
+          <button type="submit">Tweet</button>
+          <output name="counter" class="counter" for="tweet-text">140</output>
+        </footer>
       </form>
     </section>
 
+    <!-- HTML here implmented in client.js file -->
     <div id="tweets-container">
 
   </main>

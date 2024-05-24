@@ -36,7 +36,7 @@
   font-family: 'Bungee', sans-serif;
 }
 
-.tweet-footer {
+.new-tweet-footer {
   display: flex;
   justify-content: space-between;
   align-items: center;
