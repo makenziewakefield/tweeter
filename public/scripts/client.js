@@ -97,12 +97,12 @@ $(document).ready(function() {
     $('.error-message').slideUp();
 
     $.post('/tweets', formData)
-      .done(function (data) {
+      .done(function(data) {
         $('#tweet-text').val('');
         $('#tweet-container').empty();
         loadTweets();
       })
-      .fail(function (err) {
+      .fail(function(err) {
         console.error('Error:', err);
       });
   });
