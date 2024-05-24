@@ -16,3 +16,9 @@ This repository is the starter code for the project: Students will fork and clon
 
 - Express
 - Node 5.10.x or above
+
+## Screenshots
+
+!["Screenshot of tweet newly submitted tweet"](docs/large-screen-screenshot.png)
+!["Screenshot of tweet with long tweet error"](docs/large-screen-screenshot.png)
+!["Screenshot of small screen with error"](docs/small-screen-errors-screenshot.png)
