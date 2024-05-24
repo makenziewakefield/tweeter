@@ -38,6 +38,8 @@ nav span {
   background-color: inherit;
 }
 
+
+/* Responsive design for larger screens */
 @media screen and (min-width: 1024px) {
   body {
     display: flex;
@@ -47,21 +49,17 @@ nav span {
   .main-header {
     width: 40%;
     margin-top: 150px;
-    margin-left: 20px;
+    margin-left: 50px;
   }
 
   .container {
     width: 60%;
     margin: 30px;
-    padding-top: 100px;
-  }
-
-  .user-info {
-    position: relative;
-    top: -40px;
+    padding-top: 75px;
   }
 }
 
+/* Responsive design for smaller screens */
 @media screen and (max-width: 1023px) {
   .main-nav {
     display: none;
@@ -69,5 +67,9 @@ nav span {
 
   .user-info {
     padding-bottom: 100px;
+  }
+
+  .main-header {
+    padding-top: 120px;
   }
 }
