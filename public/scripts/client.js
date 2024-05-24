@@ -5,11 +5,11 @@
  */
 
 
-$(document).ready(function () {
+$(document).ready(function() {
 
   // Function to render tweets on the page
-  const renderTweets = function (tweets) {
-    const $container = $('tweets-container');
+  const renderTweets = function(tweets) {
+    const $container = $('#tweets-container');
     $container.empty();
     for (const tweet of tweets) {
       const $tweet = createTweetElement(tweet);
@@ -29,7 +29,7 @@ $(document).ready(function () {
 
 
   // Function to create HTML structure for a single tweet
-  const createTweetElement = function (tweet) {
+  const createTweetElement = function(tweet) {
 
     const timeAgo = timeago.format(tweet.created_at);
 
@@ -55,7 +55,7 @@ $(document).ready(function () {
     );
     $footer.append($time, $icons);
 
-    const $tweet = $('<article class="tweets-container">');
+    const $tweet = $('<article class="tweet-element">');
     $tweet.append($header, $content, $footer);
 
     return $tweet;
@@ -63,7 +63,7 @@ $(document).ready(function () {
 
 
   // Function to load tweets from the server
-  const loadTweets = function () {
+  const loadTweets = function() {
     $.ajax({
       url: '/tweets',
       method: 'GET',
@@ -79,7 +79,7 @@ $(document).ready(function () {
 
 
   // Function to validate tweet content
-  const isTweetValid = function (tweetContent) {
+  const isTweetValid = function(tweetContent) {
     if (!tweetContent) {
       return false;
     } else if (tweetContent.length > 140) {
