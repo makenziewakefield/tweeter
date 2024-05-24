@@ -25,8 +25,13 @@ body {
   justify-content: space-between;
   font-size: 15px;
   padding-top: 20px;
-
   border-top: 3px solid darkslategray;
+}
+
+.footer-icons {
+  display: flex;
+  justify-content: space-evenly;
+  width: 12%;
 }
 
 .tweets-footer i:hover {
