@@ -29,8 +29,8 @@ $(document).ready(function() {
     const $header = $('<div class="tweet-header">');
     const $userProfile = $('<div class="user-profile">');
     const $avatar = $('<img>').attr('src', tweet.user.avatars).attr('alt', 'User Avatar');
-    const $name = $('<span class="user-name">').text(escape(tweet.user.name));
-    const $handle = $('<span class="user-handle">').text(escape(tweet.user.handle));
+    const $name = $('<span class="user-name">').text(tweet.user.name);
+    const $handle = $('<span class="user-handle">').text(tweet.user.handle);
 
     $userProfile.append($avatar, $name);
     $header.append($userProfile, $handle);
@@ -99,7 +99,7 @@ $(document).ready(function() {
     $.post('/tweets', formData)
       .done(function(data) {
         $('#tweet-text').val('');
-        $('#tweet-container').empty();
+        $('.counter').text(140);
         loadTweets();
       })
       .fail(function(err) {
